@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../public/CSS/ms.css">
+</head>
+<body>
+    <center>
+    <div class="table data" id="flex-container">
+        <div class "c1">
+            <h2>MARK SHEET</h2>
+        </div>
+        <div class "c1">
+            <table border="1">
+                <tr>
+                    <th>S.NO</th>
+                    <th>NAME</th>
+                    <th>ROLL NO</th>
+                    <th>DATE</th>
+                    
+                    <th>TEST 1</th>
+                    <th>TEST 2</th>
+                    <th>TEST 3</th>
+                    <th>AVERAGE SCORE</th>
+                </tr>
+                <% if(userData.length!=0){%>
+                <%var i=1;%>
+            <%userData.forEach(function(data){%>
+            <tr>
+                <td><%=i;%></td>
+                <td><%=data.NAME %></td>
+                <td><%=data.ROLLNO%></td>
+                <% var datemonth=data.DATE_OF_EXAM.getMonth()+1 %>
+                <td><%=data.DATE_OF_EXAM.getDate()+"/"+datemonth+"/"+data.DATE_OF_EXAM.getFullYear() %></td>
+                
+                <td><%=data.T1%></td>
+                <td><%=data.T2%></td>
+                <td><%=data.T3%></td>
+                <td><%=Math.round((data.T1+data.T2+data.T3)/3)%></td>
+            </tr>
+        <% i++;})%>
+        <%} else{%>
+        <tr>
+            <td colspan="9">No data found</td>
+        </tr>
+        
+       <% }%>
+        
+        
+    
+            </table>
+        </div>
+    </div>
+</center>
+</body>
+</html>
